@@ -19,7 +19,7 @@
 
         #registrationForm {
             width: 50%;
-            margin-top: 20px;
+            margin-top: 50px;
         }
 
         .input-field {
@@ -51,17 +51,17 @@
         }
 
         #progressBar {
-            width: 100%;
-            background-color: #ddd;
-            position: fixed;
-            top: 0;
-        }
+        width: 50%; /* Coincide con el ancho de #registrationForm */
+        margin-top: 50px; /* Espacio desde la parte superior del #registrationForm */
+        /* Quitar 'position: fixed;' para evitar que se mueva con el scroll */
+        left: 25%; /* Esto centra la barra de progreso si la página es de 100% de ancho */
+    }
 
-        #progress {
-            height: 20px;
-            background-color: #4CAF50;
-            width: 0%;
-        }
+    #progress {
+        height: 20px;
+        background-color: #4CAF50;
+        width: 20%; /* Inicialmente al 20% para representar 1 de 5 partes */
+    }
     </style>
 </head>
 
@@ -127,9 +127,9 @@
             <button type="button" onclick="nextStep()">Siguiente</button>
         </fieldset>
 
-        <!-- Paso 2: Datos de la empresa -->
+        <!-- Paso 2: Datos de su Unidad Productiva -->
         <fieldset class="step">
-            <h2>Paso 2: Datos de la empresa</h2>
+            <h2>Paso 2: Datos de su Unidad Productiva</h2>
             <label for="DireccionProductiva">¿Cuál es la dirección de la Unidad Productiva Artesanal a la que pertenece?</label>
             <input type="text" id="DireccionProductiva" class="input-field" name="DireccionProductiva" placeholder="ejemplo: calle pascoe Nro2671 zona 16 de julio" required>
 
@@ -172,7 +172,7 @@
                 <option value="ARTESANIA CULINARIA Y ARTESANIA  EN ARTE POPULAR ">ARTESANIA CULINARIA Y ARTESANIA EN ARTE POPULAR </option>
             </select>
 
-            <label for="Asociacion">¿A qué Asociación Pertenece?</label>
+            <label for="Asociacion">¿A qué Organización Pertenece?</label>
             <select id="Asociacion" class="input-field" name="Asociacion" required>
                 <option value="">--Seleccione una Asociación--</option>
             </select>
@@ -182,14 +182,50 @@
 
         <!-- Paso 3: Datos de producción -->
         <fieldset class="step">
-            <h2>Paso 3: Datos de Unidad Productiva Artesanal</h2>
-            <input type="text" name="producttype" placeholder="Tipo de producto">
-            <input type="number" name="quantity" placeholder="Cantidad">
+            <h2>Paso 3: Datos de Producción</h2>
+            <label for="ProductoPrincipal">¿Cual es el principal producto que elabora?</label>
+            <input type="text" class="input-field" name="ProductoPrincipal" placeholder="Ejemplo: Muebles de Cocina">
+
+            <label for="ProductoSecundario">¿Cual es el segundo producto que elabora?</label>
+            <input type="text" class="input-field" name="ProductoSecundario" placeholder="Ejemplo: Chamarras">
             <!-- Más campos según necesites -->
             <button type="button" onclick="nextStep()">Siguiente</button>
         </fieldset>
 
-        <!-- Paso 4: Agradecimiento -->
+        <!-- Paso 4: Datos de proreferenciales -->
+        <fieldset class="step">
+            <h2>Paso 4: Datos Referenciales</h2>
+            <label for="Licencia">¿Cuenta con Licencia de Funcionamiento por el GAMEA?</label>
+            <select id="Licencia" class="input-field" name="Licencia" required>
+                <option value="">--Seleccione un Opcion--</option>
+                <option value="si">SI</option>
+                <option value="no">NO</option>
+            </select>
+
+            <label for="ImpuestoGamea">¿Qué tipo de Impuestos paga al GAMEA?</label><br>
+            <div><br>
+            <input type="checkbox" id="venta" name="ImpuestoGamea" value="venta">
+            <label for="venta">Patente de puesto de venta</label><br>
+
+            <input type="checkbox" id="productiva" name="ImpuestoGamea" value="productiva">
+            <label for="productiva">Patente de unidad productiva</label><br>
+
+            <input type="checkbox" id="comercio" name="ImpuestoGamea" value="comercio">
+            <label for="comercio">Patente de Tienda de comercio prod.</label><br>
+
+            <input type="checkbox" id="feria" name="ImpuestoGamea" value="feria">
+            <label for="feria">Patente Temporal de Feria</label><br>
+
+            <input type="checkbox" id="ninguno" name="ImpuestoGamea" value="ninguno">
+            <label for="ninguno">Ninguno</label><br>
+
+            <input type="checkbox" id="otro" name="ImpuestoGamea" value="otro">
+            <label for="otro">Otro</label><br>
+            </div><br>
+            <button type="button" onclick="nextStep()">Siguiente</button>
+        </fieldset>
+
+        <!-- Paso 5: Agradecimiento -->
         <fieldset class="step">
             <h2>Registro completo</h2>
             <p>Gracias por registrar tu información.</p>
@@ -417,7 +453,10 @@
 
             // Event listener for Rubro dropdown changes
             document.getElementById('Rubro').addEventListener('change', updateAsociacionOptions);
+
         });
+
+        
     </script>
 </body>
 

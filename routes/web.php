@@ -28,3 +28,7 @@ $router->get('/formulariov2', function () use ($router) {
 $router->get('/formulariov3', function () use ($router) {
     return view('formulariov3');
 });
+
+$router->get('/formulariov4', function () use ($router) {
+    return view('formulariov4');
+});
