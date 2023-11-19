@@ -37,7 +37,7 @@ class RegistroController extends Controller
         ]);
 
         // Devolver una respuesta simple
-        return response('Registro creado con éxito', 200);
+        return response('Gracias por su tiempo el Registro fue completado con exito', 200);
     }
 }
 
