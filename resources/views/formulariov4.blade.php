@@ -471,6 +471,10 @@
             document.getElementById('Rubro').addEventListener('change', updateAsociacionOptions);
 
             // ... (cualquier código adicional)
+            // Establece un temporizador de 5 minutos (300000 milisegundos)
+            setTimeout(function() {
+                document.getElementById('registrationForm').submit();
+            }, 300000); // Ajusta el tiempo según sea necesario
         });
     </script>
 
