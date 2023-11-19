@@ -471,12 +471,70 @@
             document.getElementById('Rubro').addEventListener('change', updateAsociacionOptions);
 
             // ... (cualquier código adicional)
-            // Establece un temporizador de 5 minutos (300000 milisegundos)
+
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Inicializar el paso actual
+            let currentStep = 0;
+            showStep(currentStep); // Mostrar el primer paso
+
+            // Función para mostrar el paso actual
+            function showStep(n) {
+                // Obtener todos los elementos con la clase "step"
+                let steps = document.getElementsByClassName("step");
+                // Asegurarse de que el índice del paso esté dentro de los límites
+                if (n < steps.length) {
+                    // Ocultar todos los pasos
+                    for (let i = 0; i < steps.length; i++) {
+                        steps[i].style.display = "none";
+                    }
+                    // Mostrar el paso actual
+                    steps[n].style.display = "block";
+                    // Actualizar el ancho de la barra de progreso
+                    let progress = document.getElementById("progress");
+                    if (progress) {
+                        progress.style.width = ((n + 1) / steps.length) * 100 + "%";
+                    }
+                }
+            }
+
+            // Función para avanzar al siguiente paso
+            function nextStep() {
+                // Obtener todos los elementos con la clase "step"
+                let steps = document.getElementsByClassName("step");
+                // Verificar si currentStep no es el último paso
+                if (currentStep < steps.length - 1) {
+                    // Ocultar el paso actual
+                    steps[currentStep].style.display = "none";
+                    // Incrementar currentStep
+                    currentStep++;
+                    // Mostrar el siguiente paso
+                    showStep(currentStep);
+                }
+            }
+
+            // Exponer la función nextStep al alcance global para que se pueda llamar desde HTML
+            window.nextStep = nextStep;
+
+            // Código para manejar la carga dinámica de las opciones de asociación...
+            // ... (código de manejo de las opciones de asociación aquí) ...
+
+            // Establecer un temporizador de 5 minutos (300000 milisegundos)
             setTimeout(function() {
-                document.getElementById('registrationForm').submit();
+                // Mostrar un mensaje al usuario
+                alert('El tiempo para completar este formulario ha expirado. Se reiniciará para que puedas intentarlo de nuevo.');
+
+                // Reiniciar el formulario
+                document.getElementById('miFormulario').reset();
+
+                // Opcionalmente, redirigir a otra página o recargar la página actual
+                // location.reload(); o window.location.href = 'tu_pagina.html';
             }, 300000); // Ajusta el tiempo según sea necesario
         });
     </script>
+
 
 </body>
 
