@@ -32,3 +32,7 @@ $router->get('/formulariov3', function () use ($router) {
 $router->get('/formulariov4', function () use ($router) {
     return view('formulariov4');
 });
+
+// Ruta para procesar el formulario
+// $router->post('/registro',['uses'=>'RegistroController@insertar']);
+$router->post('/registro', 'RegistroController@insertar');
