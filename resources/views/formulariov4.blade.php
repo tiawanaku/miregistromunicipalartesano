@@ -202,7 +202,7 @@
             <!-- Licencia de Funcionamiento -->
             <div class="mb-3">
                 <label for="Licencia" class="form-label">¿Cuenta con Licencia de Funcionamiento por el GAMEA?</label>
-                <select id="Licencia" class="form-select" name="licencia_funcionamiento" required>
+                <select id="Licencia" class="form-select" name="licencia_funcionamiento">
                     <option value="">--Seleccione una Opción--</option>
                     <option value="1">SI</option>
                     <option value="0">NO</option>
